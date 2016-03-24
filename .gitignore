@@ -5,6 +5,9 @@
 
 # Swap files
 *~
+# Ignore pycharm files
+.idea
+*.pyc
 
 # Ignore Mac OSX files
 .DS_Store
