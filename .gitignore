@@ -1,0 +1,18 @@
+# Ignore application binaries
+*.zip
+*.ipa
+*.apk
+
+# Swap files
+*~
+
+# Ignore Mac OSX files
+.DS_Store
+._.DS_Store
+._*
+.com.apple.timemachine.supported
+
+# Ignore Windows Files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
