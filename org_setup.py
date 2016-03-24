@@ -5,7 +5,7 @@ import json
 import getpass
 from sys import stdout
 from subprocess import Popen, PIPE
-from apperian import apperian
+import apperian.apperian as apperian
 
 
 class EaseSetup:
@@ -18,8 +18,8 @@ class EaseSetup:
         self.sdk_path = params['sdk_path']
         self.sign_local = params['local']
         self.credentials = params['credentials_psk']
-        self.ease = apperian.Ease(self.user, self.password, php=self.php_endpoint, py=self.python_endpoint,
-                                  verbose=params['verbose'])
+        self.ease = apperian.Pyapi(self.user, self.password, php=self.php_endpoint, py=self.python_endpoint,
+                                   verbose=params['verbose'])
         self.app_list = self.ease.app.list()
         self.app_data = {
             'strongswan': {
@@ -158,7 +158,7 @@ class EaseSetup:
             if app['policies']:
                 print '\nWrapping app'
                 # print 'e.wrapper.wrap_app({}, {})'.format(app['psk'], app['policies'])
-                wrap_resp = self.ease.wrapper.wrap_app(app['psk'], app['policies'])
+                wrap_resp = self.ease.wrapper.wrap(app['psk'], app['policies'])
 
                 # Update app_data with wrapping status. 1 = success, 0 = failure. continue loop and move on to next app
                 # if wrapping fails
